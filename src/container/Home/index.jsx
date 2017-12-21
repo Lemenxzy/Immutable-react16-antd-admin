@@ -80,8 +80,8 @@ class Home extends BaseComponent {
                 </Sider>
                 <Layout>
                     {/*<Header style={{ background: '#fff', padding: 0 }} />*/}
-                    <Content style={{ margin: '0 16px' }}>
-                        <Breadcrumb style={{ margin: '16px 0' }}>
+                    <Content className={style.ContentB}>
+                        <Breadcrumb className={style.Breadcrumb}>
                             <Breadcrumb.Item>User</Breadcrumb.Item>
                             <Breadcrumb.Item>Bill</Breadcrumb.Item>
                         </Breadcrumb>
