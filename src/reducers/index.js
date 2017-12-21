@@ -1,7 +1,5 @@
 
-import HomeReducer from '../container/Home/reducer'
-import HomeSonReducer from '../container/Home/HomeSon/reducer'
+import { chageResult } from 'RAndA/leftnav'
 export default {
-    HomeReducer,
-    HomeSonReducer
+    chageResult
 };

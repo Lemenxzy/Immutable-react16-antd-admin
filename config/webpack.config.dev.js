@@ -62,7 +62,7 @@ module.exports = {
     ),
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      Actions:path.resolve("src/actions"),
+      RAndA:path.resolve("src/actions"),
       Utils:path.resolve("src/utils"),
       PubCom:path.resolve("src/publicCom"),
       // Support React Native Web

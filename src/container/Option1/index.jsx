@@ -6,26 +6,25 @@
  To change this template use File | Settings | File Templates.
  */
 
-import React from 'react';
+import React,{Component} from 'react';
 import BaseComponent from 'Utils/BaseComponent.jsx'
-import { Layout } from 'antd'
-const { Footer } = Layout;
 
-class Foot extends BaseComponent {
+class Option1 extends BaseComponent {
 
     constructor(props) {
         super(props);
     }
 
+
     render() {
         return (
-            <Footer style={{ textAlign: 'center' }}>
-                智成科技 ©2016 Created by Intellifai
-            </Footer>
+            <div>
+              121111
+            </div>
         )
 
     }
 }
 
 
-export default Foot
+export default Option1

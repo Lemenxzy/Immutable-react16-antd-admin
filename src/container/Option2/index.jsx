@@ -8,24 +8,23 @@
 
 import React from 'react';
 import BaseComponent from 'Utils/BaseComponent.jsx'
-import { Layout } from 'antd'
-const { Footer } = Layout;
 
-class Foot extends BaseComponent {
+class Option2 extends BaseComponent {
 
     constructor(props) {
         super(props);
     }
 
+
     render() {
         return (
-            <Footer style={{ textAlign: 'center' }}>
-                智成科技 ©2016 Created by Intellifai
-            </Footer>
+            <div>
+                22222222
+            </div>
         )
 
     }
 }
 
 
-export default Foot
+export default Option2
