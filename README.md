@@ -4,12 +4,12 @@
   * `react-router 4`
   * `redux`
   * `antd`
+  * `sass`
   * `css-modules`
   * `immutable`
   * `chunk懒加载`
   * `devSeverver热更新`
-  * `jest单元测试`
-
+  * `react 16`
 ## 运行方法
 
 
@@ -26,9 +26,6 @@
 
 你可以看到此项目的demo
 
-### `npm test`
-
-运行 App.test.js 进行单元测试
 
 ### `npm run build`
 
@@ -41,9 +38,6 @@
 ```
 my-app/
   config
-    jest  -----单元测试配置
-      cssTransform.js
-      fileTransform.js
     env.js  -----单元测试配置
     paths.js  -----公共path提取
     polyfills.js -----单元测试配置
@@ -82,6 +76,7 @@ my-app/
 
 src目录中都用了css模块化。
 node_modules 是普通的css-loader
+还有sass
 
 ```
 
