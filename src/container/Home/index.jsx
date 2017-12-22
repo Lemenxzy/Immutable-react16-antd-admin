@@ -6,8 +6,10 @@ import BaseComponent from 'Utils/BaseComponent.jsx'
 import style from './home.scss'
 import Foot from 'PubCom/footer'
 import LeftMenu from 'PubCom/LeftMenu'
-import { Route } from 'react-router-dom'
+import { Route , Link} from 'react-router-dom'
 import {AsyncComponent} from 'Utils/asyncComponent.jsx'
+import SwitchCSSTransitionGroup from 'switch-css-transition-group'
+import leftconfig from 'Config/leftnav'
 
 
 class Home extends BaseComponent {
@@ -29,9 +31,32 @@ class Home extends BaseComponent {
     };
 
 
-
-
     render() {
+        //面包屑逻辑
+        const breadcrumbNameMap = {};
+        leftconfig.map((data,index)=>{
+            if (index !== 0 ){
+                breadcrumbNameMap[data.path] = data.name
+            }
+        });
+        const { location } = this.props;
+        const pathSnippets = location.pathname.split('/').filter(i => i);
+        const extraBreadcrumbItems = pathSnippets.map((_, index) => {
+            const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+            return (
+                <Breadcrumb.Item key={url}>
+                    <Link to={url}>
+                        {breadcrumbNameMap[url]}
+                    </Link>
+                </Breadcrumb.Item>
+            );
+        });
+        const breadcrumbItems = [(
+            <Breadcrumb.Item key="/home" className={style.firstBreadcrumb}>
+                <Link to="/home">首页</Link>
+            </Breadcrumb.Item>
+        )].concat(extraBreadcrumbItems);
+
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider
@@ -49,18 +74,33 @@ class Home extends BaseComponent {
                              className = { style.logo }
                         />
                     </div>
-                    <LeftMenu history = {this.props.history} match={this.props.match}/>
+                    <LeftMenu location = {this.props.location} history = {this.props.history} match={this.props.match}/>
                 </Sider>
                 <Layout>
                     <Content className={style.ContentB}>
-                        <Breadcrumb className={style.Breadcrumb}>
-                            <Breadcrumb.Item>User</Breadcrumb.Item>
-                            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+
+                        {/*面包屑*/}
+                        <Breadcrumb separator=">" className={style.Breadcrumb}>
+                            {breadcrumbItems}
                         </Breadcrumb>
-                        
+
+                        {/*正文*/}
                         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-                            <Route exact strict path="/home" component={ AsyncComponent('Option1') } />
-                            <Route exact strict path="/home/Option2" component={ AsyncComponent('Option2') } />
+                            <SwitchCSSTransitionGroup
+                                location={this.props.location}
+                                transitionName='example'
+                                transitionLeaveTimeout={500}
+                                transitionEnterTimeout={500}
+                            >
+                                {
+                                    leftconfig.map((data,index)=>{
+                                        return(
+                                            <Route key={ "router"+index } exact strict path={data.path} component={ AsyncComponent(data.component) } />
+                                        )
+                                    })
+                                }
+                                
+                            </SwitchCSSTransitionGroup>
                         </div>
                     </Content>
                     <Foot />

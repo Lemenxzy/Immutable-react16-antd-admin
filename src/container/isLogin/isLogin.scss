@@ -1,0 +1,12 @@
+.spinbig_wrap{
+  height: 100%;
+  display: flex;
+  width: 100%;
+  :global(.ant-spin){
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin:0 auto;
+
+  }
+}

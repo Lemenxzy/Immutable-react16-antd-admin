@@ -12,6 +12,7 @@ import {  Menu , Icon } from 'antd'
 import { Map } from 'immutable';
 import { change } from 'RAndA/leftnav'
 import { connect } from 'react-redux';
+import leftconfig from 'Config/leftnav'
 
 class LeftMenu extends BaseComponent {
 
@@ -20,30 +21,36 @@ class LeftMenu extends BaseComponent {
        
     }
 
+
+    componentDidMount(){
+        //刷新默认选中
+        this.props.dispatch(change(this.props.location.pathname));
+    }
+
     handleClick = (e)=>{
         //添加redux
         this.props.dispatch(change(e.key));
-        console.log(this.props.match.url);
         //改变路由
         this.props.history.push(e.key)
     };
 
     render() {
-        //console.log(this.props.select.getIn(['select']));
         return (
             <Menu theme="dark"
                   mode="inline"
                   onClick={this.handleClick}
                   selectedKeys = {[this.props.changeResult.getIn(['data'])]}
             >
-                <Menu.Item key="/home">
-                    <Icon type="pie-chart" />
-                    <span>Option 1</span>
-                </Menu.Item>
-                <Menu.Item key="/home/Option2">
-                    <Icon type="desktop" />
-                    <span>Option 2</span>
-                </Menu.Item>
+                {
+                    leftconfig.map((data)=>{
+                        return(
+                            <Menu.Item key={data.path}>
+                                <Icon type={data.Icon} />
+                                <span>{data.name}</span>
+                            </Menu.Item>
+                        )
+                    })
+                }
             </Menu>
         )
 

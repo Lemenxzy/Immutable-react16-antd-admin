@@ -65,6 +65,7 @@ module.exports = {
       RAndA:path.resolve("src/actions"),
       Utils:path.resolve("src/utils"),
       PubCom:path.resolve("src/publicCom"),
+      Config:path.resolve("src/config"),
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
