@@ -8,9 +8,9 @@ import Foot from 'PubCom/footer'
 import LeftMenu from 'PubCom/LeftMenu'
 import { Route , Link} from 'react-router-dom'
 import {AsyncComponent} from 'Utils/asyncComponent.jsx'
+import { AsyncPost } from 'Utils/utils'
 import SwitchCSSTransitionGroup from 'switch-css-transition-group'
 import leftconfig from 'Config/leftnav'
-
 
 class Home extends BaseComponent {
     
@@ -21,6 +21,12 @@ class Home extends BaseComponent {
                 collapsed: false
             })
         }
+    }
+
+    componentDidMount(){
+        AsyncPost('/login',{},(data)=>{
+            console.log(data);
+        })
     }
 
     onCollapse = (collapsed) => {

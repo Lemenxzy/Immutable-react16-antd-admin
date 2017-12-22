@@ -4,6 +4,7 @@ import {AsyncComponent} from 'Utils/asyncComponent.jsx'
 import SwitchCSSTransitionGroup from 'switch-css-transition-group'
 
 class App extends Component {
+    
   render() {
     return (
         <SwitchCSSTransitionGroup
